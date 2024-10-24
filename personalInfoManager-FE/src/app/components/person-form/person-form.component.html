@@ -1,0 +1,441 @@
+<form
+  [formGroup]="personForm"
+  (ngSubmit)="onSubmit()"
+  class="form-small shadow p-3 mb-2 bg-white rounded"
+>
+  <!-- Personal Information -->
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="firstName" class="small">First Name</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="firstName"
+        formControlName="firstName"
+        [ngClass]="{ 'is-invalid': personForm.get('firstName')?.invalid && (personForm.get('firstName')?.touched || personForm.get('firstName')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('firstName')?.errors?.['required'] && (personForm.get('firstName')?.touched || personForm.get('firstName')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        First Name is required.
+      </div>
+      <div
+        *ngIf="personForm.get('firstName')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("firstName")?.getError("serverError") }}
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-2">
+      <label for="lastName" class="small">Last Name</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="lastName"
+        formControlName="lastName"
+        [ngClass]="{ 'is-invalid': personForm.get('lastName')?.invalid && (personForm.get('lastName')?.touched || personForm.get('lastName')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('lastName')?.errors?.['required'] && (personForm.get('lastName')?.touched || personForm.get('lastName')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Last Name is required.
+      </div>
+      <div
+        *ngIf="personForm.get('lastName')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("lastName")?.getError("serverError") }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="birthName" class="small">Birth Name</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="birthName"
+        formControlName="birthName"
+        [ngClass]="{ 'is-invalid': personForm.get('birthName')?.invalid && (personForm.get('birthName')?.touched || personForm.get('birthName')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('birthName')?.errors?.['required'] && (personForm.get('birthName')?.touched || personForm.get('birthName')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Birth Name is required.
+      </div>
+      <div
+        *ngIf="personForm.get('birthName')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("birthName")?.getError("serverError") }}
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-2">
+      <label for="motherName" class="small">Mother's Name</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="motherName"
+        formControlName="motherName"
+        [ngClass]="{ 'is-invalid': personForm.get('motherName')?.invalid && (personForm.get('motherName')?.touched || personForm.get('motherName')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('motherName')?.errors?.['required'] && (personForm.get('motherName')?.touched || personForm.get('motherName')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Mother's Name is required.
+      </div>
+      <div
+        *ngIf="personForm.get('motherName')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("motherName")?.getError("serverError") }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="gender" class="small">Gender</label>
+      <select
+        class="form-control form-control-sm"
+        id="gender"
+        formControlName="gender"
+        [ngClass]="{ 'is-invalid': personForm.get('gender')?.invalid && (personForm.get('gender')?.touched || personForm.get('gender')?.errors?.['serverError']) }"
+      >
+        <option value="">Select your gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+      <div
+        *ngIf="personForm.get('gender')?.errors?.['required'] && (personForm.get('gender')?.touched || personForm.get('gender')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Gender is required.
+      </div>
+      <div
+        *ngIf="personForm.get('gender')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("gender")?.getError("serverError") }}
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-2">
+      <label for="nationality" class="small">Nationality</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="nationality"
+        formControlName="nationality"
+        [ngClass]="{ 'is-invalid': personForm.get('nationality')?.invalid && (personForm.get('nationality')?.touched || personForm.get('nationality')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('nationality')?.errors?.['required'] && (personForm.get('nationality')?.touched || personForm.get('nationality')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Nationality is required.
+      </div>
+      <div
+        *ngIf="personForm.get('nationality')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("nationality")?.getError("serverError") }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Fields -->
+  <label>Address</label>
+  <div formGroupName="address" class="row">
+    <div class="col-md-4 mb-2">
+      <label for="addressPostalCode" class="small">Postal Code</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="addressPostalCode"
+        formControlName="postalCode"
+        [ngClass]="{ 'is-invalid': personForm.get('address.postalCode')?.invalid && (personForm.get('address.postalCode')?.touched || personForm.get('address.postalCode')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('address.postalCode')?.errors?.['required'] && (personForm.get('address.postalCode')?.touched || personForm.get('address.postalCode')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid postal code.
+      </div>
+      <div
+        *ngIf="personForm.get('address.postalCode')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("address.postalCode")?.getError("serverError") }}
+      </div>
+    </div>
+    <div class="col-md-4 mb-2">
+      <label for="addressCity" class="small">City</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="addressCity"
+        formControlName="city"
+        [ngClass]="{ 'is-invalid': personForm.get('address.city')?.invalid && (personForm.get('address.city')?.touched || personForm.get('address.city')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('address.city')?.errors?.['required'] && (personForm.get('address.city')?.touched || personForm.get('address.city')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid city.
+      </div>
+      <div
+        *ngIf="personForm.get('address.city')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("address.city")?.getError("serverError") }}
+      </div>
+    </div>
+    <div class="col-md-4 mb-2">
+      <label for="addressStreet" class="small">Street</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="addressStreet"
+        formControlName="street"
+        [ngClass]="{ 'is-invalid': personForm.get('address.street')?.invalid && (personForm.get('address.street')?.touched || personForm.get('address.street')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('address.street')?.errors?.['required'] && (personForm.get('address.street')?.touched || personForm.get('address.street')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid street.
+      </div>
+      <div
+        *ngIf="personForm.get('address.street')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("address.street")?.getError("serverError") }}
+      </div>
+    </div>
+  </div>
+
+  <label>Mailing Address</label>
+  <div formGroupName="mailingAddress" class="row">
+    <div class="col-md-4 mb-2">
+      <label for="mailingPostalCode" class="small">Postal Code</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="mailingPostalCode"
+        formControlName="postalCode"
+        [ngClass]="{ 'is-invalid': personForm.get('mailingAddress.postalCode')?.invalid && (personForm.get('mailingAddress.postalCode')?.touched || personForm.get('mailingAddress.postalCode')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('mailingAddress.postalCode')?.errors?.['required'] && (personForm.get('mailingAddress.postalCode')?.touched || personForm.get('mailingAddress.postalCode')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid postal code.
+      </div>
+      <div
+        *ngIf="
+          personForm.get('mailingAddress.postalCode')?.hasError('serverError')
+        "
+        class="invalid-feedback"
+      >
+        {{
+          personForm.get("mailingAddress.postalCode")?.getError("serverError")
+        }}
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-2">
+      <label for="mailingCity" class="small">City</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="mailingCity"
+        formControlName="city"
+        [ngClass]="{ 'is-invalid': personForm.get('mailingAddress.city')?.invalid && (personForm.get('mailingAddress.city')?.touched || personForm.get('mailingAddress.city')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('mailingAddress.city')?.errors?.['required'] && (personForm.get('mailingAddress.city')?.touched || personForm.get('mailingAddress.city')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid city.
+      </div>
+      <div
+        *ngIf="personForm.get('mailingAddress.city')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("mailingAddress.city")?.getError("serverError") }}
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-2">
+      <label for="mailingStreet" class="small">Street</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="mailingStreet"
+        formControlName="street"
+        [ngClass]="{ 'is-invalid': personForm.get('mailingAddress.street')?.invalid && (personForm.get('mailingAddress.street')?.touched || personForm.get('mailingAddress.street')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('mailingAddress.street')?.errors?.['required'] && (personForm.get('mailingAddress.street')?.touched || personForm.get('mailingAddress.street')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid street.
+      </div>
+      <div
+        *ngIf="personForm.get('mailingAddress.street')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("mailingAddress.street")?.getError("serverError") }}
+      </div>
+    </div>
+  </div>
+
+  <label>Residence Address</label>
+  <div formGroupName="residence" class="row">
+    <div class="col-md-4 mb-2">
+      <label for="residencePostalCode" class="small">Postal Code</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="residencePostalCode"
+        formControlName="postalCode"
+        [ngClass]="{ 'is-invalid': personForm.get('residence.postalCode')?.invalid && (personForm.get('residence.postalCode')?.touched || personForm.get('residence.postalCode')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('residence.postalCode')?.errors?.['required'] && (personForm.get('residence.postalCode')?.touched || personForm.get('residence.postalCode')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid postal code.
+      </div>
+      <div
+        *ngIf="personForm.get('residence.postalCode')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("residence.postalCode")?.getError("serverError") }}
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-2">
+      <label for="residenceCity" class="small">City</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="residenceCity"
+        formControlName="city"
+        [ngClass]="{ 'is-invalid': personForm.get('residence.city')?.invalid && (personForm.get('residence.city')?.touched || personForm.get('residence.city')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('residence.city')?.errors?.['required'] && (personForm.get('residence.city')?.touched || personForm.get('residence.city')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid city.
+      </div>
+      <div
+        *ngIf="personForm.get('residence.city')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("residence.city")?.getError("serverError") }}
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-2">
+      <label for="residenceStreet" class="small">Street</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="residenceStreet"
+        formControlName="street"
+        [ngClass]="{ 'is-invalid': personForm.get('residence.street')?.invalid && (personForm.get('residence.street')?.touched || personForm.get('residence.street')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('residence.street')?.errors?.['required'] && (personForm.get('residence.street')?.touched || personForm.get('residence.street')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Please provide a valid street.
+      </div>
+      <div
+        *ngIf="personForm.get('residence.street')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("residence.street")?.getError("serverError") }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Information -->
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <label for="phoneNumber" class="small">Phone Number</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        [ngClass]="{ 'is-invalid': personForm.get('phoneNumber')?.invalid && (personForm.get('phoneNumber')?.touched || personForm.get('phoneNumber')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('phoneNumber')?.errors?.['required'] && (personForm.get('phoneNumber')?.touched || personForm.get('phoneNumber')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Phone Number is required.
+      </div>
+      <div
+        *ngIf="personForm.get('phoneNumber')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("phoneNumber")?.getError("serverError") }}
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-2">
+      <label for="taxId" class="small">Tax ID</label>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="taxId"
+        formControlName="taxId"
+        [ngClass]="{ 'is-invalid': personForm.get('taxId')?.invalid && (personForm.get('taxId')?.touched || personForm.get('taxId')?.errors?.['serverError']) }"
+      />
+      <div
+        *ngIf="personForm.get('taxId')?.errors?.['required'] && (personForm.get('taxId')?.touched || personForm.get('taxId')?.errors?.['serverError'])"
+        class="invalid-feedback"
+      >
+        Tax ID is required.
+      </div>
+      <div
+        *ngIf="personForm.get('taxId')?.hasError('serverError')"
+        class="invalid-feedback"
+      >
+        {{ personForm.get("taxId")?.getError("serverError") }}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <label for="notes">Notes</label>
+    <textarea
+      class="form-control form-control-sm"
+      id="notes"
+      formControlName="notes"
+      rows="3"
+    ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary btn-sm">Regist</button>
+  <span
+    *ngIf="message.show"
+    [class.show]="message.show"
+    class="alert alert-success fade-in-out p-1"
+    role="alert"
+  >
+    {{ message.text }}
+  </span>
+</form>

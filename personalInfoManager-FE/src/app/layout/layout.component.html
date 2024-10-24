@@ -1,0 +1,16 @@
+<div class="container">
+  <h4 class="row justify-content-center mt-4">Information Manager Hub</h4>
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-12">
+      <app-person-form (personCreated)="onPersonCreated()"></app-person-form>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <app-person-list
+        [persons]="persons"
+        (personDeleted)="onPersonDeleted()"
+      ></app-person-list>
+    </div>
+  </div>
+</div>

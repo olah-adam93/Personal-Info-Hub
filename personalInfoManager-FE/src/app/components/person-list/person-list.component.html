@@ -1,0 +1,119 @@
+<div class="person-list-container shadow p-3 mb-2 bg-white rounded">
+  <div class="person-list">
+    <div
+      *ngFor="let person of persons"
+      class="person-item"
+      (click)="selectPerson(person)"
+    >
+      {{ person.lastName }} {{ person.firstName }} 's details
+      <span class="delete-icon" (click)="deletePerson(person.id)"
+        >&#x2716;</span
+      >
+      <div
+        *ngIf="selectedPerson?.id === person.id"
+        class="person-details-inline"
+      >
+        <div class="details-person">
+          <div class="detail-row">
+            <p class="detail-label">
+              Birth Name:
+              <span class="detail-value">{{ person.birthName }}</span>
+            </p>
+            <p class="detail-label">
+              Mother's Name:
+              <span class="detail-value">{{ person.motherName }}</span>
+            </p>
+          </div>
+          <div class="detail-row">
+            <p class="detail-label">
+              Gender: <span class="detail-value">{{ person.gender }}</span>
+            </p>
+            <p class="detail-label">
+              Nationality:
+              <span class="detail-value">{{ person.nationality }}</span>
+            </p>
+          </div>
+
+          <div class="address-group">
+            <p>Address:</p>
+            <div class="address-container">
+              <p class="detail-label">
+                Postal Code:
+                <span class="detail-value">{{
+                  person.address.postalCode
+                }}</span>
+              </p>
+              <p class="detail-label">
+                City:
+                <span class="detail-value">{{ person.address.city }}</span>
+              </p>
+              <p class="detail-label">
+                Street:
+                <span class="detail-value">{{ person.address.street }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="address-group">
+            <p>Mailing Address:</p>
+            <div class="address-container">
+              <p class="detail-label">
+                Postal Code:
+                <span class="detail-value">{{
+                  person.mailingAddress.postalCode
+                }}</span>
+              </p>
+              <p class="detail-label">
+                City:
+                <span class="detail-value">{{
+                  person.mailingAddress.city
+                }}</span>
+              </p>
+              <p class="detail-label">
+                Street:
+                <span class="detail-value">{{
+                  person.mailingAddress.street
+                }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="address-group">
+            <p>Residence:</p>
+            <div class="address-container">
+              <p class="detail-label">
+                Postal Code:
+                <span class="detail-value">{{
+                  person.residence.postalCode
+                }}</span>
+              </p>
+              <p class="detail-label">
+                City:
+                <span class="detail-value">{{ person.residence.city }}</span>
+              </p>
+              <p class="detail-label">
+                Street:
+                <span class="detail-value">{{ person.residence.street }}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <p class="detail-label">
+              Phone Number:
+              <span class="detail-value">{{ person.phoneNumber }}</span>
+            </p>
+            <p class="detail-label">
+              Tax ID: <span class="detail-value">{{ person.taxId }}</span>
+            </p>
+          </div>
+          <div class="detail-row">
+            <p>
+              Notes: <span class="detail-value">{{ person.notes }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

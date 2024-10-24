@@ -1,0 +1,29 @@
+input {
+  font-size: 10px;
+  padding: 10px;
+  height: 20px;
+}
+
+select {
+  font-size: 10px;
+  height: 25px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+textarea {
+  height: 50px;
+}
+
+.invalid-feedback {
+  font-size: 10px;
+}
+
+.alert {
+  position: relative;
+  left: 15px;
+  bottom: -3px;
+}
